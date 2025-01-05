@@ -1,12 +1,8 @@
-- 👋 Hi, I’m @tric3ratops
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
+Hi there 👋
+¡Hola! Soy tric3ratops 🦖
+¡Bienvenido a mi perfil de GitHub! Soy un dinosaurio.
 
-<!---
-tric3ratops/tric3ratops is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+Acerca de Mí
+🌍 Explorador de la Era Mesozoica
+📚 Investigador de la Paleontología
+💻 Desarrollador de Software Jurásico
