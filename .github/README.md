@@ -26,7 +26,7 @@
 <p align="center">
   <a href="https://github.com/juan-miii?tab=repositories&q=&type=public&language=java&sort=">
     <!-- href="https://skillicons.dev/icons?i=java,spring,maven,gradle,postgres,docker&theme=dark" -->
-    <img src="public/skill-icons/main-stack.svg" style="height: 60px;"/>
+    <img src="https://raw.githubusercontent.com/juan-miii/juan-miii/main/.github/public/skill-icons/main-stack.svg" style="height: 60px;"/>
   </a>
 </p>
 
@@ -35,7 +35,7 @@
 <p align="center">
   <a href="https://github.com/juan-miii?tab=repositories&q=&type=public&language=&sort=stargazers">
     <!-- href="https://skillicons.dev/icons?i=c,githubactions,aws,py,bash,typescript,nodejs,astro,tailwind&theme=dark" -->
-    <img src="public/skill-icons/extended-stack.svg" />
+    <img src="https://raw.githubusercontent.com/juan-miii/juan-miii/main/.github/public/skill-icons/extended-stack.svg" />
 	</a>
 </p>
 
