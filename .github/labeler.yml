@@ -1,0 +1,20 @@
+documentation:
+  - changed-files:
+      - any-glob-to-any-file: "**/*.md"
+
+github_actions:
+  - changed-files:
+      - any-glob-to-any-file: ".github/workflows/**"
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          [
+            ".gitignore",
+            ".gitattibutes",
+            ".lycheeignore",
+            ".github/labeler.yml",
+            ".github/dependabot.yml",
+            ".github/ISSUE_TEMPLATE/config.yml",
+            ".vscode/settings.json",
+          ]

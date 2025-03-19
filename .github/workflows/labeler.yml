@@ -1,0 +1,62 @@
+name: Pull Request Labeler
+
+on:
+  pull_request_target:
+    types: [opened, reopened]
+
+jobs:
+  labeler:
+    permissions:
+      contents: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Run Labeler
+        uses: actions/labeler@8558fd74291d67161a8a78ce36a881fa63b766a9
+        with:
+          configuration-path: ".github/labeler.yml"
+
+      - name: Check Labels
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get the PR number and repo details
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          REPO=${{ github.repository }}
+
+          # Fetch the labels on the PR
+          RESPONSE=$(curl -s -H "Accept: application/vnd.github+json" \
+                          -H "Authorization: Bearer $GITHUB_TOKEN" \
+                          "https://api.github.com/repos/$REPO/issues/$PR_NUMBER/labels")
+
+          # Check if the response is a valid JSON array
+          if echo "$RESPONSE" | jq -e 'type=="array"' >/dev/null 2>&1; then
+            LABELS=$(echo "$RESPONSE" | jq -r '.[].name')
+          else
+            echo "Error: API response is not a valid array or contains an error."
+            exit 1
+          fi
+
+          # Check labels count
+          COUNT=$(echo "$LABELS" | wc -l)
+          if [ "$COUNT" -gt 1 ]; then
+            COMMENT_BODY=":white_check_mark: **\`$COUNT\` labels detected.**\n\nThis is the result of an automated workflow. Labels can still be updated if needed."
+          elif [ "$COUNT" -eq 1 ]; then
+            COMMENT_BODY=":white_check_mark: **\`$COUNT\` label detected.**\n\nThis is the result of an automated workflow. Labels can still be updated if needed."
+          else
+            COMMENT_BODY=":white_check_mark: **No labels detected.**\n\nThis is the result of an automated workflow. Labels can still be updated if needed."
+          fi
+
+          echo "COMMENT_BODY=$COMMENT_BODY" >> $GITHUB_ENV
+
+          COMMENTS_URL="${{ github.event.pull_request.comments_url }}"
+
+          curl -X POST \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Content-Type: application/json" \
+            -d "{\"body\":\"$COMMENT_BODY\"}" \
+            "$COMMENTS_URL"

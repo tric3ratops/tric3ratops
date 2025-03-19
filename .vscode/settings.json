@@ -1,0 +1,16 @@
+{
+	"files.autoSave": "onFocusChange",
+	"editor.formatOnSave": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "always"
+	},
+	"editor.formatOnSaveMode": "file",
+	"task.saveBeforeRun": "always",
+	"editor.tabSize": 2,
+	"workbench.editor.customLabels.patterns": {},
+	"editor.foldingImportsByDefault": true,
+	"editor.wordWrap": "on",
+	"yaml.schemas": {
+		"https://json.schemastore.org/github-issue-config.json": "./.github/ISSUE_TEMPLATE/config.yml"
+	}
+}

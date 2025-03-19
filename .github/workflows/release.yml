@@ -1,0 +1,32 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${GITHUB_REF#refs/tags/}"
+
+          gh release create "$tag" \
+            --title="$tag" \
+            --draft \
+            --generate-notes
+
+      - name: Summary
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          echo "### GitHub Release" >> $GITHUB_STEP_SUMMARY
+          echo "- :bookmark: Release created for tag \`$TAG\`" >> $GITHUB_STEP_SUMMARY
