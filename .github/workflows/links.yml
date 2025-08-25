@@ -21,7 +21,7 @@ jobs:
 
       - name: Link Checker
         id: lychee
-        uses: lycheeverse/lychee-action@f613c4a64e50d792e0b31ec34bbcbba12263c6a6
+        uses: lycheeverse/lychee-action@01a5c94d8e012550040658854b90a7a7301e75ca
         with:
           # Check all markdown, html files in repo
           args: "--verbose './**/*.md' './**/*.html'"
